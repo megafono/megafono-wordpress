@@ -13,21 +13,21 @@
  */
 
 class Megafono {
-  public function __construct() {
-    # add_filter( 'embed_defaults', array( $this, 'embed_defaults'), 10, 2 );
-  }
+    public function __construct() {
+        add_filter( 'embed_defaults', array( $this, 'embed_defaults'), 10, 2 );
+    }
 
-  // public function embed_defaults($embed_size, $url) {
-  //   if ( $this->is_megafono_url($url) ) {
-  //     $embed_size['height'] = 190;
-  //   }
+    public function embed_defaults($embed_size, $url) {
+        if ( $this->is_megafono_url($url) ) {
+            $embed_size['height'] = 190;
+        }
 
-  //   return $embed_size;
-  // }
+        return $embed_size;
+    }
 
-  public function is_megafono_url($url) {
-    return preg_match('/^(.*)\/e\/([\w-]+)$/', $input_line);
-  }
+    public function is_megafono_url($url) {
+        return preg_match('/^(.*)\/e\/([\w-]+)$/', $url);
+    }
 }
 
 new Megafono();
