@@ -6,7 +6,7 @@
  * Author: Megafono
  * Author URI: https://www.megafono.host
  * Text Domain: Text-domain
- * Version: 0.0.2
+ * Version: 0.0.3
  *
  * @package         Megafono
  */
