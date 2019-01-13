@@ -12,12 +12,18 @@
  * @package         Megafono
  */
 
-class Megafono {
+require_once( 'megafono-wordpress-updater.php' );
+
+class MegafonoWordpress {
     public function __construct() {
-        add_filter( 'embed_defaults', array( $this, 'embed_defaults'), 10, 2 );
+        add_filter( 'embed_defaults', array( $this, 'megafono_embed_defaults'), 10, 2 );
+
+        if( is_admin() ) {
+            new MegafonoWordpressUpdater( __FILE__, 'megafono', 'megafono-wordpress' );
+        }
     }
 
-    public function embed_defaults($embed_size, $url) {
+    public function megafono_embed_defaults( $embed_size, $url ) {
         if ( $this->is_megafono_url($url) ) {
             $embed_size['height'] = 190;
         }
@@ -25,9 +31,9 @@ class Megafono {
         return $embed_size;
     }
 
-    public function is_megafono_url($url) {
+    private function is_megafono_url($url) {
         return preg_match('/^(.*)\/e\/([\w-]+)$/', $url);
     }
 }
 
-new Megafono();
+new MegafonoWordpress();
