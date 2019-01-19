@@ -31,7 +31,7 @@ class MegafonoWordpress {
     }
 
     private function is_megafono_url($url) {
-        return preg_match('/^(.*)\/e\/([\w-]+)$/', $url);
+        return preg_match('/megafono\.host/', $url) || preg_match('/^(.*)\/e\/([\w-]+)$/', $url) ;
     }
 }
 
