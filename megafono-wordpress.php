@@ -30,7 +30,7 @@ class MegafonoWordpress {
         return $embed_size;
     }
 
-    private function is_megafono_url($url) {
+    public function is_megafono_url($url) {
         return preg_match('/megafono\.host/', $url) || preg_match('/^(.*)\/e\/([\w-]+)$/', $url) ;
     }
 }
